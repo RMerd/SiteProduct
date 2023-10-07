@@ -1,0 +1,14 @@
+﻿@model SiteProduct.ViewModels.ProductViewModel
+<html>
+<head>
+    <title>Товар</title>
+</head>
+<body>
+    <div>Идентификатор: @Model.Id</div>
+    <div>Наименование: @Model.Name</div>
+    <div>Цена: @Model.Price.ToString("C")</div>
+    <div>Дата изготовления: @Model.ProductionDate</div>
+    <div>Категория: @Model.Category</div>
+    @Html.ActionLink("К списку", "Index", "Home")
+</body>
+</html>
