@@ -1,12 +1,12 @@
 ﻿@using SiteProduct.ViewModels
 @model IEnumerable<ProductViewModel>
-
+@addTagHelper *,Microsoft.AspNetCore.Mvc.TagHelpers
 <html>
 <head>
-	<title>Товары</title>
+    <title>Товары</title>
 </head>
 <body>
-	<table>
+    <table>
         <tr>
             <td>Id</td>
             <td>Наименование</td>
@@ -14,16 +14,19 @@
             <td>Дата изготовления</td>
             <td>Категория</td>
         </tr>
-		@foreach(var p in @Model)
-		 {
+        @foreach (var p in @Model)
+        {
             <tr>
-                <td>@Html.ActionLink(p.Id.ToString(),"Details",new { id = p.Id }) </td>
+                <td>@Html.ActionLink(p.Id.ToString(), "Details", new { id = p.Id }) </td>
                 <td>@p.Name</td>
                 <td>@p.Price.ToString("C")</td>
                 <td>@p.ProductionDate</td>
                 <td>@p.Category</td>
             </tr>
-		 }
-	</table>
+        }
+    </table>
+    <div>
+        <a asp-action="Create">Добавить товар</a>
+    </div>
 </body>
 </html>
