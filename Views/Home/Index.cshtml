@@ -6,6 +6,7 @@
     <title>Товары</title>
 </head>
 <body>
+    <h1>Каталог товаров:</h1>
     <table>
         <tr>
             <td>Id</td>
@@ -25,6 +26,7 @@
             </tr>
         }
     </table>
+    <p><strong>Всего: @Model.Count() шт.</strong></p>
     <div>
         <a asp-action="Create">Добавить товар</a>
     </div>
