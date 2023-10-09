@@ -42,6 +42,11 @@ namespace SiteProduct.Services
             _products.Add(product);
             return product.Id;
         }
+        
+        public void Delete(int id)
+        {
+            _products.Remove(_products.FirstOrDefault(p => p.Id == id));
+        }
 
         public Product Get(int id)
         {

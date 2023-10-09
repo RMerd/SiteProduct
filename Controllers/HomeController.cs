@@ -59,5 +59,11 @@ namespace SiteProduct.Controllers
             };
             return View(productViewModel);
         }
+        
+        public IActionResult Delete(int id)
+        {
+            _products.Delete(id);
+            return RedirectToAction("Index");
+        }
     }
 }
