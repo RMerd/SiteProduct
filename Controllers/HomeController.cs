@@ -7,8 +7,8 @@ namespace SiteProduct.Controllers
 {
     public class HomeController : Controller
     {
-        private IProductData _products;
-        private ITypeProductData _category;
+        private readonly IProductData _products;
+        private readonly ITypeProductData _category;
 
         public HomeController(IProductData product, ITypeProductData category)
         {

@@ -4,7 +4,7 @@ namespace SiteProduct.Services
 {
     public class MockProductData : IProductData
     {
-        private List<Product> _products;
+        private readonly List<Product> _products;
         public MockProductData()
         {
             _products = new List<Product>
@@ -45,7 +45,7 @@ namespace SiteProduct.Services
         
         public void Delete(int id)
         {
-            _products.Remove(_products.FirstOrDefault(p => p.Id == id));
+            _products.Remove(_products.FirstOrDefault(p => p.Id == id)!);
         }
 
         public Product Get(int id)

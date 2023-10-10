@@ -1,17 +1,15 @@
-﻿@model SiteProduct.ViewModels.ProductViewModel
-<html>
-<head>
-    <title>Товар</title>
-</head>
-<body>
-    <h3>Описание товара</h3>
-    <hr />
-    <div>Идентификатор: @Model.Id</div>
-    <div>Наименование: @Model.Name</div>
-    <div>Цена: @Model.Price.ToString("C")</div>
-    <div>Дата изготовления: @Model.ProductionDate</div>
-    <div>Категория: @Model.Category</div>
-    @Html.ActionLink("К списку", "Index", "Home")
-    @Html.ActionLink("Удалить", "Delete", new {id = @Model.Id})
-</body>
-</html>
+﻿@model ProductViewModel
+@{
+    ViewBag.Title = "Подробности";
+}
+<h3>Описание товара</h3>
+<hr />
+<div>Идентификатор: @Model.Id</div>
+<div>Наименование: @Model.Name</div>
+<div>Цена: @Model.Price.ToString("C")</div>
+<div>Дата изготовления: @Model.ProductionDate</div>
+<div>Категория: @Model.Category</div>
+@Html.ActionLink("К списку", "Index", "Home")
+@Html.ActionLink("Удалить", "Delete", new { id = @Model.Id })
+
+
