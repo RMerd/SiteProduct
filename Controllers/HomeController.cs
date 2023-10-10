@@ -24,7 +24,7 @@ namespace SiteProduct.Controllers
         [HttpPost]
         public IActionResult Create(Product model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var newId = _products.Add(model);
                 return RedirectToAction("Details", new { id = newId });
@@ -59,7 +59,27 @@ namespace SiteProduct.Controllers
             };
             return View(productViewModel);
         }
-        
+
+        public IActionResult Edit(int id)
+        {
+            var product = _products.Get(id);
+            if (product == null) RedirectToAction("Index");
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, Product model)
+        {
+            var product = _products.Get(id);
+            if (product == null || !ModelState.IsValid) return View(model);
+            product.Name = model.Name;
+            product.Price = model.Price;
+            product.ProductionDate = model.ProductionDate;
+            product.CategoryId = model.CategoryId;
+            _products.Save(product);
+            return RedirectToAction("Details", new {id = product.Id});
+        }
+
         public IActionResult Delete(int id)
         {
             _products.Delete(id);

@@ -1,31 +1,19 @@
 ﻿@model IEnumerable<ProductViewModel>
-<h1>Каталог товаров:</h1>
+@{
+    ViewBag.Title = "Домашняя страница";
+}
+<h1>Каталог товаров:</h1> 
+<p><strong>Всего: @Model?.Count() шт.</strong></p>
 <hr />
-<table>
-    <tr>
-        <td>Id</td>
-        <td>Наименование</td>
-        <td>Цена</td>
-        <td>Дата изготовления</td>
-        <td>Категория</td>
-    </tr>
-    @foreach (var p in @Model)
-    {
-        <tr>
-            <td>@Html.ActionLink(p.Id.ToString(), "Details", new { id = p.Id }) </td>
-            <td>@p.Name</td>
-            <td>@p.Price.ToString("C")</td>
-            <td>@p.ProductionDate</td>
-            <td>@p.Category</td>
-        </tr>
-    }
-</table>
-<p><strong>Всего: @Model.Count() шт.</strong></p>
-<div>
-    <a asp-action="Create">Добавить товар</a>
-</div>
+@foreach (var product in Model ?? new List<ProductViewModel>())
+{
+    <partial name="_Product", model="@product" />
+}
+<br />
+<br />
+<a asp-action="Create">Добавить товар</a>
 
 @section footer
-{ 
+{
     <div>Это нижний колонтитул домашней страницы</div>
 }
