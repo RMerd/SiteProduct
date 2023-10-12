@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+using SiteProduct.Db;
 using SiteProduct.Services;
 
 namespace SiteProduct
@@ -7,8 +9,10 @@ namespace SiteProduct
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddSingleton<IProductData, MockProductData>();
-            builder.Services.AddSingleton<ITypeProductData, MockTypeProductData>();
+            var conn = builder.Configuration.GetConnectionString("DefaultConnection");
+            builder.Services.AddDbContext<Repository>(opt => opt.UseSqlServer(conn));
+            builder.Services.AddScoped<IProductData, SqlProductData>();
+            builder.Services.AddScoped<ITypeProductData, SqlTypeProductData>();
             builder.Services.AddMvc();
             var app = builder.Build();
 
