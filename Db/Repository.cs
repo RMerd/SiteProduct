@@ -9,7 +9,7 @@ namespace SiteProduct.Db
         public DbSet<TypeProduct> TypeProducts { get; set; }
         public Repository(DbContextOptions<Repository> options) : base(options)
         {
-            Database.EnsureCreated();
+            //Database.EnsureCreated();
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

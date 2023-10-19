@@ -27,9 +27,11 @@ namespace SiteProduct.Controllers
             if (ModelState.IsValid)
             {
                 var newId = _products.Add(model);
+                Console.WriteLine($"Создана модель: {model.Id} {model.Name} {model.Price}");
                 return RedirectToAction("Details", new { id = newId });
             }
             return View();
+            
         }
 
         public ViewResult Index()
@@ -80,10 +82,16 @@ namespace SiteProduct.Controllers
             return RedirectToAction("Details", new {id = product.Id});
         }
 
+        [HttpPost]
         public IActionResult Delete(int id)
         {
             _products.Delete(id);
-            return RedirectToAction("Index");
+            return View("Delete", $"Удаление произведено успешно");
+        }
+
+        public IActionResult Delete()
+        {
+            return View();
         }
     }
 }

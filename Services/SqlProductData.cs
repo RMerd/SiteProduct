@@ -22,6 +22,7 @@ namespace SiteProduct.Services
         {
             var product = repository.Find<Product>(id);
             if (product != null) repository.Remove(product);
+            repository.SaveChanges();
         }
 
         public Product Get(int id)
