@@ -7,11 +7,16 @@
 <hr />
 @foreach (var product in Model ?? new List<ProductViewModel>())
 {
-    <partial name="_Product", model="@product" />
+    <div class="p-1">
+        <partial name="_Product" , model="@product" />
+    </div>
 }
 <br />
 <br />
-<a asp-action="Create">Добавить товар</a>
+<div class="p-1">
+    <a class="btn btn-success" asp-action="Create">Добавить товар</a>
+</div>
+
 
 @section footer
 {

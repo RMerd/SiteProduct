@@ -15,9 +15,9 @@ namespace SiteProduct
             //builder.Services.AddScoped<ITypeProductData, SqlTypeProductData>();
             builder.Services.AddScoped<IProductData, DapperProductData>();
             builder.Services.AddScoped<ITypeProductData, DapperTypeProductData>();
-            builder.Services.AddMvc();
+            builder.Services.AddMvc().AddRazorRuntimeCompilation();
             var app = builder.Build();
-
+            app.UseStaticFiles();
             app.MapControllerRoute(name: "default", pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
